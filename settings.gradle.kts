@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Composables"
 include(":app")
+include(":color")

@@ -6,13 +6,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun AboutPage(onNavigateBack: () -> Unit, onNavigateToDonatePage: () -> Unit) {
+fun AboutPage(
+    onNavigateBack: () -> Unit,
+    onNavigateToDonatePage: () -> Unit,
+    onNavigateToAppearancePage: () -> Unit
+) {
     Column {
         Text(text = "This is about page")
         Button(onClick = {
             onNavigateToDonatePage()
         }) {
             Text(text = "Donate")
+        }
+        Button(onClick = {
+            onNavigateToAppearancePage()
+        }) {
+            Text(text = "Appearance")
         }
         Button(onClick = {
             onNavigateBack()

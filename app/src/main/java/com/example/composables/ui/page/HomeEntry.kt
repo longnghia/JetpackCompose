@@ -1,5 +1,6 @@
 package com.example.composables.ui.page
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -9,12 +10,14 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.composables.ui.common.LocalSeedColor
 import com.example.composables.ui.common.Route
 import com.example.composables.ui.common.animatedComposable
 import com.example.composables.ui.common.slideInVerticallyComposable
 import com.example.composables.ui.page.home.HomePage
 import com.example.composables.ui.page.settings.AboutPage
 import com.example.composables.ui.page.settings.DonatePage
+import com.example.composables.ui.page.settings.appearance.AppearancePage
 
 
 @Composable
@@ -29,7 +32,7 @@ fun HomeEntry() {
         }
     }
     Box(modifier = Modifier.fillMaxSize()) {
-
+        Log.d("TAG", "HomeEntry.LocalSeedColor: ${LocalSeedColor.current}")
         NavHost(
             modifier = Modifier.fillMaxSize(),
             navController = navController,
@@ -61,7 +64,13 @@ fun NavGraphBuilder.settingsGraph(
         animatedComposable(Route.ABOUT) {
             AboutPage(
                 onNavigateBack = onNavigateBack,
-                onNavigateToDonatePage = { onNavigateTo(Route.DONATE) })
+                onNavigateToDonatePage = { onNavigateTo(Route.DONATE) },
+                onNavigateToAppearancePage = { onNavigateTo(Route.APPEARANCE) })
+        }
+        animatedComposable(Route.APPEARANCE) {
+            AppearancePage(
+                onNavigateBack = onNavigateBack
+            )
         }
         slideInVerticallyComposable(Route.DONATE) {
             DonatePage(

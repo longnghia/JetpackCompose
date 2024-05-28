@@ -7,6 +7,7 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import com.example.composables.ui.SettingsProvider
 import com.example.composables.ui.page.HomeEntry
+import com.example.composables.ui.theme.ComposablesTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -15,9 +16,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             val windowSizeClass = calculateWindowSizeClass(this)
             SettingsProvider(windowWidthSizeClass = windowSizeClass.widthSizeClass) {
-                HomeEntry()
+                ComposablesTheme {
+                    HomeEntry()
+                }
             }
         }
     }
 }
-
