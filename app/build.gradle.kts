@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -68,6 +69,12 @@ dependencies {
     implementation(project(":color"))
     implementation(libs.mmkv)
     implementation(libs.androidx.compose.material3.windowSizeClass)
+
+    // Network
+    implementation(libs.okhttp)
+
+    //Serialization
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

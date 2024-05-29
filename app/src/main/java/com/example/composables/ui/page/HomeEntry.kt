@@ -14,6 +14,7 @@ import com.example.composables.ui.common.LocalSeedColor
 import com.example.composables.ui.common.Route
 import com.example.composables.ui.common.animatedComposable
 import com.example.composables.ui.common.slideInVerticallyComposable
+import com.example.composables.ui.page.api.ApiPage
 import com.example.composables.ui.page.home.HomePage
 import com.example.composables.ui.page.settings.AboutPage
 import com.example.composables.ui.page.settings.DonatePage
@@ -44,7 +45,17 @@ fun HomeEntry() {
                         navController.navigate(Route.SETTINGS) {
                             launchSingleTop = true
                         }
+                    },
+                    navigateToApi = {
+                        navController.navigate(Route.API) {
+                            launchSingleTop = true
+                        }
                     }
+                )
+            }
+            animatedComposable(Route.API) {
+                ApiPage(
+                    onNavigateBack = onNavigateBack
                 )
             }
             settingsGraph(onNavigateBack = onNavigateBack, onNavigateTo = { route ->
